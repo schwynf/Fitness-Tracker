@@ -1,9 +1,12 @@
 async function initWorkout() {
   let lastWorkout = await API.getLastWorkout();
-  lastWorkout.totalDuration = 0;
+  if(lastWorkout){
+    lastWorkout.totalDuration = 0;
   for(i=0; i < lastWorkout.exercises.length; i++){
     lastWorkout.totalDuration = lastWorkout.totalDuration + lastWorkout.exercises[i].duration
     }
+
+  }
 
   console.log("Last workout:", lastWorkout);
   if (lastWorkout) {
